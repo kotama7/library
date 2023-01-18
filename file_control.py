@@ -1,1 +1,1 @@
-from .file_control.get_file_contents import *
+from .file_control_module.get_file_contents import *

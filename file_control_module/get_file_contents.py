@@ -19,9 +19,9 @@ def get_file_contents(dir_path:str,include_sub=False,exception=[],reg_ex=False) 
             elif os.path.isdir(joined_path):
                 search_sub(joined_path,path_ls)
     if not type(dir_path) is str:
-        raise Exception(f"dir_path must be str class, but {str(dir_path)} class is given")
-    if not type(exception) is str:
-        raise Exception(f"exception must be list class, but {str(exception)} class is given")    
+        raise Exception(f"dir_path must be str class, but {str(type(dir_path))} class is given")
+    if not type(exception) is list:
+        raise Exception(f"exception must be list class, but {str(type(exception))} class is given")    
     if include_sub:
         folder_path = []
         search_sub(dir_path,folder_path)
