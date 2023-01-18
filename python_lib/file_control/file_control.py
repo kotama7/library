@@ -1,0 +1,1 @@
+from .module.get_file_contents import *
