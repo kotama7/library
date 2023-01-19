@@ -31,6 +31,8 @@ def get_file_contents(dir_path:str,include_sub=False,exception=[],reg_ex=False) 
     for path in folder_path:
         with open(path,"r",encoding="utf-8") as f:
             name = "".join(os.path.basename(path).split(".")[:-1])
+            if not name:
+                name = os.path.basename(path)
             if name in file_dict:
                 raise Exception("overlapping error: There are files which have same name")
             elif name in exception or (reg_ex and re.match(exception,name)):
