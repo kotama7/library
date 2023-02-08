@@ -1,0 +1,1 @@
+from .tkinter_extension_module.get_tk_images import *
