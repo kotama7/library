@@ -21,8 +21,6 @@ def get_tk_images(path_list:list,size_list:list) -> list:
             img = Image.open(path).resize(int(size[0]),int(size[1]))
         except FileNotFoundError:
             raise FileNotFoundError(f"FileNotFoundError:\nThere is no file having name : {path}")
-        except IndexError:
-            raise IndexError(f"IndexError:\na size_list member must be (height,width)")
         tk_img = ImageTk.PhotoImage(img)
         image_ls.append(tk_img)
     return image_ls
