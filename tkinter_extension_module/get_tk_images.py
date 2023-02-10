@@ -12,15 +12,16 @@ def get_tk_images(path_list:list,size_list:list) -> list:
     if(len(path_list) != len(size_list)):
         raise Exception("the length of path_list and size_list must be same.")
     image_ls = []
-    for path, size in path_list, size_list:
+    for path, size in zip(path_list, size_list):
         if type(path) is not str:
             raise Exception("all members of path_list must be string")
         if len(size) != 2 or not (type(size[0]) is int and type(size[1]) is int):
             raise Exception("all members of size_list must be (width, height) and both of that is integer")
         try:
-            img = Image.open(path).resize(int(size[0]),int(size[1]))
+            img = Image.open(path)
         except FileNotFoundError:
             raise FileNotFoundError(f"FileNotFoundError:\nThere is no file having name : {path}")
+        img.resize((size[0],size[1]))
         tk_img = ImageTk.PhotoImage(img)
         image_ls.append(tk_img)
     return image_ls
