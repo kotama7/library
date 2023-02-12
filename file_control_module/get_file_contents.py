@@ -4,12 +4,12 @@ import re
 def get_file_contents(dir_path:str,include_sub=False,exception=[],reg_ex=False) -> dict:
     """
         This fuction return dictionary which have each file name as a key and content as a value encoded utf-8.
-        value is only string. So, this function can't read file as any other form.
-        key names don't include extensions.
-        if "all" option is True, returned dictionary include all files in sub directories.
-        "exception" attribute must list which all members is string. this specify the files you don't want to read.
-        if "reg_ex" option is True, the all members of "exception" list is interpreted as regular expression.
-        if there is file which have same name, this function raise error.
+        Value is only string. So, this function can't read file as any other form.
+        Key names don't include extensions.
+        If "all" option is True, returned dictionary include all files in sub directories.
+        The "exception" attribute must list which all members is string. this specify the files you don't want to read.
+        If "reg_ex" option is True, the all members of "exception" list is interpreted as regular expression.
+        If there is file which have same name, this function raise error.
     """
     def search_sub(dir_path:str,path_ls:list):
         for path in os.listdir(dir_path):
@@ -34,7 +34,7 @@ def get_file_contents(dir_path:str,include_sub=False,exception=[],reg_ex=False) 
             if not name:
                 name = os.path.basename(path)
             if name in file_dict:
-                raise Exception("overlapping error: There are files which have same name")
+                raise Exception("Overlapping error: There are files which have same name")
             elif name in exception or (reg_ex and re.match(exception,name)):
                 continue
             file_dict[name] = f.read().strip()
